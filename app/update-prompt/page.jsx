@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 
-const EditPrompt = () => {
+import { Suspense } from "react";
+
+const Edit = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -64,4 +66,10 @@ const EditPrompt = () => {
   );
 };
 
-export default EditPrompt;
+export default function EditPrompt() {
+  return (
+    <Suspense>
+      <Edit />
+    </Suspense>
+  );
+}
